@@ -1,0 +1,22 @@
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Python (for any local server scripts)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node (in case future tooling is added)
+node_modules/
