@@ -368,10 +368,127 @@ code {
     color: var(--color-primary);
 }
 
-/* ---------- Placeholder helper (remove when sections are real) ---------- */
-.placeholder {
-    padding: 120px 0;
+/* ---------- Section heading helper ---------- */
+.section-head {
     text-align: center;
+    max-width: 720px;
+    margin: 0 auto 64px;
+}
+
+.section-eyebrow {
+    margin: 0 0 12px;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin: 0 0 16px;
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ---------- Workflow ---------- */
+.workflow {
+    padding: var(--space-section) 0;
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.workflow-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: nowrap;
+}
+
+.workflow-step {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+}
+
+.workflow-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding: 32px 28px;
+    background: #fff;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    color: var(--text-primary);
+    transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.workflow-card:hover,
+.workflow-card:focus-visible {
+    transform: translateY(-2px);
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(26, 77, 140, 0.08);
+}
+
+.workflow-step-num {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+}
+
+.workflow-step-icon {
+    display: inline-flex;
+    width: 56px;
+    height: 56px;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    background: rgba(26, 77, 140, 0.08);
+    color: var(--color-primary);
+}
+
+.workflow-step-stage {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    letter-spacing: 0.08em;
+}
+
+.workflow-step-name {
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.workflow-step-desc {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+}
+
+.workflow-arrow {
+    flex: 0 0 auto;
+    align-self: center;
+    color: var(--text-muted);
+    list-style: none;
 }
 
 /* ==================== Hero ==================== */
@@ -495,6 +612,15 @@ code {
 
     .header-inner {
         gap: 12px;
+    }
+
+    .workflow-steps {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .workflow-arrow {
+        transform: rotate(90deg);
     }
 }
 

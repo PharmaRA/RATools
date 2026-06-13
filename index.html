@@ -78,7 +78,86 @@
             </div>
         </section>
 
-        <!-- Workflow / Project sections — added in next tasks -->
+        <!-- ==================== WORKFLOW ==================== -->
+        <section id="workflow" class="workflow" aria-labelledby="workflow-title">
+            <div class="container">
+                <header class="section-head">
+                    <p class="section-eyebrow" data-i18n="workflow.eyebrow">WORKFLOW</p>
+                    <h2 id="workflow-title" class="section-title" data-i18n="workflow.title">贯穿 RA 全流程的三件套</h2>
+                    <p class="section-subtitle" data-i18n="workflow.subtitle">三个独立工具，按提交节奏依次接力，从草稿到 eCTD 包都能交给开源完成。</p>
+                </header>
+
+                <ol class="workflow-steps" role="list">
+                    <li class="workflow-step" data-stage="draft">
+                        <a class="workflow-card" href="#word">
+                            <span class="workflow-step-num" aria-hidden="true">01</span>
+                            <span class="workflow-step-icon" aria-hidden="true">
+                                <svg viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 4h14l6 6v18H6z" />
+                                    <path d="M20 4v6h6" />
+                                    <path d="M11 16h10" />
+                                    <path d="M11 20h10" />
+                                    <path d="M11 24h7" />
+                                </svg>
+                            </span>
+                            <span class="workflow-step-stage" data-i18n="workflow.draft_stage">撰写</span>
+                            <span class="workflow-step-name">RATools for Word</span>
+                            <span class="workflow-step-desc" data-i18n="workflow.draft_desc">基于 Word 模板与宏，统一样式、加速申报文档撰写。</span>
+                        </a>
+                    </li>
+
+                    <li class="workflow-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 32 16" width="32" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 8h26" />
+                            <path d="M22 2l6 6-6 6" />
+                        </svg>
+                    </li>
+
+                    <li class="workflow-step" data-stage="finalize">
+                        <a class="workflow-card" href="#pdf">
+                            <span class="workflow-step-num" aria-hidden="true">02</span>
+                            <span class="workflow-step-icon" aria-hidden="true">
+                                <svg viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="6" y="4" width="20" height="24" rx="2" />
+                                    <path d="M11 13h10" />
+                                    <path d="M11 18h10" />
+                                    <path d="M11 23h6" />
+                                    <circle cx="22" cy="23" r="2.4" />
+                                </svg>
+                            </span>
+                            <span class="workflow-step-stage" data-i18n="workflow.finalize_stage">定稿</span>
+                            <span class="workflow-step-name">RATools for PDF</span>
+                            <span class="workflow-step-desc" data-i18n="workflow.finalize_desc">批量整理书签、超链接、页面规范，按 eCTD 要求输出 PDF。</span>
+                        </a>
+                    </li>
+
+                    <li class="workflow-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 32 16" width="32" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 8h26" />
+                            <path d="M22 2l6 6-6 6" />
+                        </svg>
+                    </li>
+
+                    <li class="workflow-step" data-stage="publish">
+                        <a class="workflow-card" href="#ectd">
+                            <span class="workflow-step-num" aria-hidden="true">03</span>
+                            <span class="workflow-step-icon" aria-hidden="true">
+                                <svg viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 8l12-4 12 4v12l-12 6L4 20z" />
+                                    <path d="M4 8l12 6 12-6" />
+                                    <path d="M16 14v12" />
+                                </svg>
+                            </span>
+                            <span class="workflow-step-stage" data-i18n="workflow.publish_stage">发布</span>
+                            <span class="workflow-step-name">RATools for eCTD</span>
+                            <span class="workflow-step-desc" data-i18n="workflow.publish_desc">管理申请与序列，校验并生成符合 FDA 3.2.2 的 eCTD 提交包。</span>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Project detail sections — added in next tasks -->
     </main>
 
     <footer class="site-footer">
