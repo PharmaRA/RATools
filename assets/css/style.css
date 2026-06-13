@@ -491,6 +491,222 @@ code {
     list-style: none;
 }
 
+/* ==================== Project section ==================== */
+.project {
+    padding: var(--space-section) 0;
+    background: var(--bg-base);
+}
+
+.project--alt {
+    background: var(--bg-alt);
+}
+
+.project-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: 64px;
+    align-items: center;
+}
+
+.project-inner--reverse .project-media {
+    order: 2;
+}
+
+.project-inner--reverse .project-body {
+    order: 1;
+}
+
+.project-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-media img {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    background: #fff;
+    border: 1px solid var(--border-subtle);
+}
+
+.project-body .section-title {
+    margin: 0 0 12px;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.project-eyebrow {
+    margin: 0 0 12px;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.project-tagline {
+    margin: 0 0 20px;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.65;
+}
+
+.badge-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(26, 77, 140, 0.08);
+    color: var(--color-primary);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+}
+
+.feature-list li {
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 10px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+}
+
+.feature-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    background: rgba(10, 166, 125, 0.14);
+    background-image: linear-gradient(45deg, transparent 45%, var(--color-accent) 45% 55%, transparent 55%),
+        linear-gradient(-45deg, transparent 45%, var(--color-accent) 45% 55%, transparent 55%);
+    background-size: 8px 8px, 8px 8px;
+    background-position: 4px 6px, 2px 6px;
+    background-repeat: no-repeat;
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.release-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 120px;
+}
+
+.release-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.release-version {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+}
+
+.release-version:hover .release-tag {
+    color: var(--color-primary);
+}
+
+.release-tag::before {
+    content: "v" / "";
+}
+
+.release-tag.is-fallback::before {
+    content: none;
+}
+
+.release-date {
+    margin-left: 8px;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.project-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn--ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border-color: transparent;
+}
+
+.btn--ghost:hover {
+    color: var(--color-primary);
+    background: rgba(26, 77, 140, 0.06);
+}
+
+@media (max-width: 960px) {
+    .project-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .project-inner--reverse .project-media,
+    .project-inner--reverse .project-body {
+        order: unset;
+    }
+
+    .project-media {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-meta {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .project-actions {
+        justify-content: flex-start;
+    }
+
+    .project-actions .btn {
+        flex: 1 1 auto;
+        justify-content: center;
+        min-width: 88px;
+    }
+}
+
 /* ==================== Hero ==================== */
 .hero {
     padding: 112px 0 88px;

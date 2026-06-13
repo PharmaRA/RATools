@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img" aria-labelledby="ectd-illustration-title">
+  <title id="ectd-illustration-title">RATools for eCTD — eCTD 发布场景示意图</title>
+
+  <rect width="480" height="360" fill="#f8f9fa"/>
+
+  <!-- left panel: tree -->
+  <rect x="40" y="48" width="200" height="264" rx="8" fill="#ffffff" stroke="#e9ecef"/>
+  <text x="56" y="72" font-family="-apple-system, Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#212529">IND-0001 / 0001</text>
+
+  <g font-family="-apple-system, Segoe UI, sans-serif" font-size="11" fill="#495057">
+    <text x="60" y="100">▾ m1 administrative</text>
+    <text x="74" y="118" fill="#1a4d8c">1.1 forms</text>
+    <text x="74" y="134">1.3 admin info</text>
+    <text x="60" y="156">▾ m2 summaries</text>
+    <text x="74" y="174">2.3 quality summary</text>
+    <text x="74" y="190">2.7 clinical summary</text>
+    <text x="60" y="212">▾ m3 quality</text>
+    <text x="74" y="230" fill="#1a4d8c">3.2.S drug substance</text>
+    <text x="74" y="246">3.2.P drug product</text>
+    <text x="60" y="268">▸ m4 nonclinical</text>
+    <text x="60" y="286">▸ m5 clinical</text>
+  </g>
+
+  <!-- arrow -->
+  <g stroke="#1a4d8c" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="248" y1="180" x2="280" y2="180"/>
+    <path d="M272 174 L280 180 L272 186"/>
+  </g>
+
+  <!-- right panel: publish job -->
+  <rect x="288" y="48" width="156" height="264" rx="8" fill="#ffffff" stroke="#e9ecef"/>
+
+  <!-- publish badge -->
+  <rect x="304" y="64" width="124" height="22" rx="11" fill="#0aa67d"/>
+  <circle cx="316" cy="75" r="3" fill="#ffffff"/>
+  <text x="368" y="79" font-family="-apple-system, Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">Published</text>
+
+  <!-- artifacts list -->
+  <g font-family="-apple-system, Segoe UI, sans-serif" font-size="10" fill="#495057">
+    <g transform="translate(304, 110)">
+      <rect x="0" y="0" width="124" height="22" rx="4" fill="#f8f9fa"/>
+      <rect x="8" y="6" width="10" height="10" rx="1" fill="#1a4d8c"/>
+      <text x="24" y="14">index.xml</text>
+    </g>
+    <g transform="translate(304, 138)">
+      <rect x="0" y="0" width="124" height="22" rx="4" fill="#f8f9fa"/>
+      <rect x="8" y="6" width="10" height="10" rx="1" fill="#1a4d8c"/>
+      <text x="24" y="14">backbone.xml</text>
+    </g>
+    <g transform="translate(304, 166)">
+      <rect x="0" y="0" width="124" height="22" rx="4" fill="#f8f9fa"/>
+      <rect x="8" y="6" width="10" height="10" rx="1" fill="#1a4d8c"/>
+      <text x="24" y="14">checksum.txt</text>
+    </g>
+    <g transform="translate(304, 194)">
+      <rect x="0" y="0" width="124" height="22" rx="4" fill="#f8f9fa"/>
+      <rect x="8" y="6" width="10" height="10" rx="1" fill="#1a4d8c"/>
+      <text x="24" y="14">report.json</text>
+    </g>
+    <g transform="translate(304, 222)">
+      <rect x="0" y="0" width="124" height="22" rx="4" fill="#f8f9fa"/>
+      <rect x="8" y="6" width="10" height="10" rx="1" fill="#0aa67d"/>
+      <text x="24" y="14">package.zip</text>
+    </g>
+  </g>
+
+  <!-- validation badge -->
+  <g transform="translate(304, 264)">
+    <rect x="0" y="0" width="124" height="32" rx="6" fill="#e9ecef" opacity="0.5"/>
+    <circle cx="14" cy="16" r="6" fill="#0aa67d"/>
+    <path d="M11 16 L13 18 L17 14" stroke="#ffffff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="28" y="20" font-family="-apple-system, Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#212529">FDA 3.2.2 OK</text>
+  </g>
+</svg>
