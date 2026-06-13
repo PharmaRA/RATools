@@ -374,6 +374,105 @@ code {
     text-align: center;
 }
 
+/* ==================== Hero ==================== */
+.hero {
+    padding: 112px 0 88px;
+    background:
+        radial-gradient(1200px 480px at 50% -240px, rgba(26, 77, 140, 0.07), transparent 70%),
+        var(--bg-base);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.hero-inner {
+    text-align: center;
+    max-width: 880px;
+}
+
+.hero-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0 auto 40px;
+    max-width: 680px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 72px;
+}
+
+.hero-stats {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    flex-wrap: wrap;
+    padding: 40px 0 0;
+    margin: 0;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.hero-stats li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.hero-stat-num {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: -0.01em;
+}
+
+.hero-stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 640px) {
+    .hero {
+        padding: 72px 0 64px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 56px;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-stats {
+        gap: 32px;
+        padding-top: 32px;
+    }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
     :root {
