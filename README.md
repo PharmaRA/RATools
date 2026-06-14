@@ -45,8 +45,8 @@ python -m http.server 8000
 
 - **纯静态**：无构建步骤、无框架依赖，全部原生 HTML / CSS / JS
 - **双语**：默认中文，顶部按钮一键切换英文，选择持久化到 localStorage
-- **动态版本号**：页面加载时调用 GitHub REST API 获取三个仓库的最新 Release 信息，带 sessionStorage 缓存（5 分钟）
-- **降级策略**：JS 禁用或 API 失败时，页面仍可正常阅读，下载按钮指向 Releases 列表页
+- **动态版本号**：页面加载时调用 GitHub REST API 获取 Word / PDF 仓库的最新 Release 信息，带 sessionStorage 缓存（5 分钟）；eCTD 暂显示为正在开发中
+- **降级策略**：JS 禁用或 API 失败时，页面仍可正常阅读，已开放项目的下载按钮指向 Releases 列表页
 - **响应式**：适配桌面（≥1200px）、平板（768–1199px）、手机（≤768px）
 
 ## 三个工具仓库

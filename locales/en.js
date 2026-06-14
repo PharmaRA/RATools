@@ -88,7 +88,8 @@ window.I18N_EN = {
                 "Canonical CTD section folder storage with placement reassignment",
                 "Sequence validation: section match, lifecycle target, file existence, publish readiness",
                 "FDA eCTD 3.2.2 backbone generation; publish artifacts include report / index / checksum / package.zip"
-            ]
+            ],
+            status: "In development"
         }
     },
 
@@ -110,7 +111,7 @@ window.I18N_EN = {
             },
             {
                 q: "Where do I report bugs or request features?",
-                a: "Open an issue on the corresponding GitHub repository. Each project card on this page links to its issues list. Please include version, steps to reproduce, and a minimal sample whenever possible."
+                a: "Open an issue on the corresponding GitHub repository for projects that are already available. Projects still in development hide the feedback entry for now. Please include version, steps to reproduce, and a minimal sample whenever possible."
             },
             {
                 q: "I'd like to contribute. Where do I start?",

@@ -1,7 +1,7 @@
 /**
  * RATools Portal — GitHub Releases dynamic loader
  *
- * Fetches latest release info from GitHub API for each project,
+ * Fetches latest release info from GitHub API for released projects,
  * then populates version tags and adjusts download links.
  *
  * Degradation:
@@ -14,8 +14,7 @@
 
     var REPOS = [
         "RATools-for-Word",
-        "RATools-for-PDF",
-        "RATools-for-eCTD"
+        "RATools-for-PDF"
     ];
 
     var CACHE_PREFIX = "ratools.release.";
