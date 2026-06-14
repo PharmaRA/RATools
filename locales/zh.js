@@ -25,10 +25,7 @@ window.I18N_ZH = {
         title: "为药品注册而生的开源工具集",
         subtitle: "三件套覆盖文档撰写 → 文档定稿 → eCTD 发布，沉淀一线 RA 经验，免费开源。",
         cta_primary: "查看工作流",
-        cta_secondary: "访问 GitHub 组织",
-        stat_projects: "开源项目",
-        stat_oss: "开源协议",
-        stat_regions: "eCTD 体系"
+        cta_secondary: "访问 GitHub 主页"
     },
 
     workflow: {

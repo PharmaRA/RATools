@@ -25,10 +25,7 @@ window.I18N_EN = {
         title: "Open-source toolkit built for pharmaceutical regulatory affairs",
         subtitle: "Three tools cover authoring, finalization, and eCTD publishing. Built from front-line RA experience, free and open source.",
         cta_primary: "See the workflow",
-        cta_secondary: "Visit GitHub org",
-        stat_projects: "Open-source tools",
-        stat_oss: "Open license",
-        stat_regions: "eCTD systems"
+        cta_secondary: "Visit GitHub"
     },
 
     workflow: {
