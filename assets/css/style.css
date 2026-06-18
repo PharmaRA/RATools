@@ -347,19 +347,6 @@ main > section > .container {
     background: var(--bg-alt);
 }
 
-.section-eyebrow {
-    color: var(--color-primary);
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin: 0 0 12px;
-}
-
-.section-title {
-    margin: 0 0 16px;
-}
-
 .section-lead {
     color: var(--text-secondary);
     font-size: 1.05rem;
