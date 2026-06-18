@@ -78,7 +78,12 @@
             if (!target) return;
 
             e.preventDefault();
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            var prefersReduced = window.matchMedia &&
+                window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            target.scrollIntoView({
+                behavior: prefersReduced ? "auto" : "smooth",
+                block: "start"
+            });
 
             // Update URL hash without jumping.
             if (history.replaceState) {
