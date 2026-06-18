@@ -16,9 +16,15 @@
     --bg-base: #ffffff;
     --bg-alt: #f8f9fa;
     --bg-elevated: #ffffff;
+    --bg-header: rgba(255, 255, 255, 0.92);
+    --bg-header-solid: rgba(255, 255, 255, 0.98);
 
     --border-subtle: #e9ecef;
     --border-strong: #dee2e6;
+
+    --tint-primary: rgba(26, 77, 140, 0.08);
+    --tint-primary-soft: rgba(26, 77, 140, 0.06);
+    --tint-accent: rgba(10, 166, 125, 0.14);
 
     --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04);
     --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.06);
@@ -36,6 +42,43 @@
     --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
 
     --header-height: 64px;
+}
+
+/* ---------- Dark mode (token remap only) ---------- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary: #5b9bd5;
+        --color-primary-hover: #7cb3e0;
+        --color-accent: #2dd4a7;
+
+        --text-primary: #e6e9ed;
+        --text-secondary: #b5bcc4;
+        --text-muted: #8a929b;
+
+        --bg-base: #14171c;
+        --bg-alt: #1b1f26;
+        --bg-elevated: #1f242c;
+        --bg-header: rgba(20, 23, 28, 0.85);
+        --bg-header-solid: rgba(20, 23, 28, 0.98);
+
+        --border-subtle: #2a2f37;
+        --border-strong: #3a414b;
+
+        --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+        --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.5);
+        --shadow-header: 0 1px 0 rgba(0, 0, 0, 0.4);
+
+        --tint-primary: rgba(91, 155, 213, 0.14);
+        --tint-primary-soft: rgba(91, 155, 213, 0.1);
+        --tint-accent: rgba(45, 212, 167, 0.16);
+    }
+
+    /* Hero glow uses the dark-friendly primary tint. */
+    .hero {
+        background:
+            radial-gradient(1200px 480px at 50% -240px, rgba(91, 155, 213, 0.1), transparent 70%),
+            var(--bg-base);
+    }
 }
 
 /* ---------- Reset + base ---------- */
@@ -185,7 +228,7 @@ main > section > .container {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.92);
+    background: var(--bg-header);
     backdrop-filter: saturate(180%) blur(8px);
     -webkit-backdrop-filter: saturate(180%) blur(8px);
     border-bottom: 1px solid transparent;
@@ -506,7 +549,7 @@ main > section > .container {
     gap: 12px;
     width: 100%;
     padding: 32px 28px;
-    background: #fff;
+    background: var(--bg-elevated);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-card);
@@ -535,7 +578,7 @@ main > section > .container {
     align-items: center;
     justify-content: center;
     border-radius: var(--radius-sm);
-    background: rgba(26, 77, 140, 0.08);
+    background: var(--tint-primary);
     color: var(--color-primary);
 }
 
@@ -602,7 +645,7 @@ main > section > .container {
     height: auto;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-card);
-    background: #fff;
+    background: var(--bg-elevated);
     border: 1px solid var(--border-subtle);
 }
 
@@ -641,7 +684,7 @@ main > section > .container {
     align-items: center;
     padding: 4px 10px;
     border-radius: 999px;
-    background: rgba(26, 77, 140, 0.08);
+    background: var(--tint-primary);
     color: var(--color-primary);
     font-size: 0.78rem;
     font-weight: 500;
@@ -670,7 +713,7 @@ main > section > .container {
     width: 14px;
     height: 14px;
     border-radius: 4px;
-    background: rgba(10, 166, 125, 0.14);
+    background: var(--tint-accent);
     background-image: linear-gradient(45deg, transparent 45%, var(--color-accent) 45% 55%, transparent 55%),
         linear-gradient(-45deg, transparent 45%, var(--color-accent) 45% 55%, transparent 55%);
     background-size: 8px 8px, 8px 8px;
@@ -770,7 +813,7 @@ main > section > .container {
 
 .btn--ghost:hover {
     color: var(--color-primary);
-    background: rgba(26, 77, 140, 0.06);
+    background: var(--tint-primary-soft);
 }
 
 @media (max-width: 960px) {
@@ -982,7 +1025,7 @@ main > section > .container {
         flex-direction: column;
         align-items: stretch;
         gap: 0;
-        background: rgba(255, 255, 255, 0.98);
+        background: var(--bg-header-solid);
         backdrop-filter: saturate(180%) blur(8px);
         -webkit-backdrop-filter: saturate(180%) blur(8px);
         border-bottom: 1px solid var(--border-subtle);
@@ -1011,7 +1054,7 @@ main > section > .container {
 
     .site-nav a.is-active {
         border-bottom: none;
-        background: rgba(26, 77, 140, 0.06);
+        background: var(--tint-primary-soft);
     }
 
     .header-inner {
