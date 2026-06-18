@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+    <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="1" stop-color="#f0f4fa"/>
+        </linearGradient>
+    </defs>
+    <rect width="1200" height="630" fill="url(#bg)"/>
+    <rect width="1200" height="8" fill="#1a4d8c"/>
+
+    <g transform="translate(96 150)">
+        <rect width="84" height="84" rx="18" fill="#1a4d8c"/>
+        <g transform="translate(20 18)" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 2h26l16 16V46H2z"/>
+            <path d="M28 2v16h16"/>
+            <path d="M12 28h22"/>
+            <path d="M12 38h14"/>
+        </g>
+        <text x="108" y="58" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="52" font-weight="700" fill="#212529">RATools</text>
+    </g>
+
+    <text x="96" y="330" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="64" font-weight="700" fill="#212529">为药品注册而生的</text>
+    <text x="96" y="410" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="64" font-weight="700" fill="#1a4d8c">开源工具集</text>
+
+    <text x="96" y="480" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="30" fill="#495057">Word 撰写 → PDF 定稿 → eCTD 发布,覆盖 RA 全流程</text>
+
+    <g transform="translate(96 530)" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" font-weight="600">
+        <rect width="200" height="48" rx="24" fill="rgba(26,77,140,0.08)"/>
+        <text x="100" y="32" text-anchor="middle" fill="#1a4d8c">RATools for Word</text>
+        <rect x="220" width="190" height="48" rx="24" fill="rgba(26,77,140,0.08)"/>
+        <text x="315" y="32" text-anchor="middle" fill="#1a4d8c">RATools for PDF</text>
+        <rect x="430" width="200" height="48" rx="24" fill="rgba(26,77,140,0.08)"/>
+        <text x="530" y="32" text-anchor="middle" fill="#1a4d8c">RATools for eCTD</text>
+    </g>
+</svg>
