@@ -52,6 +52,16 @@
         return iso.slice(0, 10);
     }
 
+    /**
+     * Normalize a release tag for display.
+     * The CSS adds a leading "v" via ::before, so strip any existing
+     * leading "v"/"V" here to avoid rendering "vv1.2.0".
+     */
+    function normalizeTag(tag) {
+        if (!tag) return "";
+        return tag.replace(/^v/i, "");
+    }
+
     /** Apply fetched release info to the DOM for a given repo. */
     function applyRelease(repo, data) {
         // Find the section with data-repo matching this repo name.
@@ -107,7 +117,7 @@
             })
             .then(function (json) {
                 var data = {
-                    tag: json.tag_name || "",
+                    tag: normalizeTag(json.tag_name),
                     url: json.html_url || "",
                     date: formatDate(json.published_at)
                 };
