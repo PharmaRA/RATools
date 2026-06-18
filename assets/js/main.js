@@ -18,7 +18,10 @@
         var header = document.querySelector(HEADER_SELECTOR);
         if (!header) return;
 
-        function update() {
+        var ticking = false;
+
+        function apply() {
+            ticking = false;
             if (window.scrollY > SCROLL_THRESHOLD) {
                 header.classList.add("is-scrolled");
             } else {
@@ -26,8 +29,14 @@
             }
         }
 
-        window.addEventListener("scroll", update, { passive: true });
-        update();
+        function onScroll() {
+            if (ticking) return;
+            ticking = true;
+            window.requestAnimationFrame(apply);
+        }
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        apply();
     }
 
     // ============= Active nav tracking =============
@@ -38,31 +47,77 @@
         var sections = [];
         for (var i = 0; i < links.length; i++) {
             var href = links[i].getAttribute("href");
-            var target = document.querySelector(href);
+            var target = href && href.length > 1 ? document.querySelector(href) : null;
             if (target) {
                 sections.push({ el: target, link: links[i] });
             }
         }
+        if (!sections.length) return;
 
-        function update() {
+        function setActive(activeSection) {
+            for (var k = 0; k < sections.length; k++) {
+                sections[k].link.classList.toggle(
+                    "is-active",
+                    sections[k] === activeSection
+                );
+            }
+        }
+
+        // Preferred path: IntersectionObserver (no per-frame work).
+        if ("IntersectionObserver" in window) {
+            var visible = {};
+            var observer = new IntersectionObserver(function (entries) {
+                for (var i = 0; i < entries.length; i++) {
+                    var idx = sections.findIndex(function (s) {
+                        return s.el === entries[i].target;
+                    });
+                    if (idx === -1) continue;
+                    visible[idx] = entries[i].isIntersecting;
+                }
+
+                // Highlight the topmost section currently in view.
+                var chosen = null;
+                for (var j = 0; j < sections.length; j++) {
+                    if (visible[j]) { chosen = sections[j]; break; }
+                }
+                if (chosen) setActive(chosen);
+            }, {
+                // Activate a section once it reaches the upper third.
+                rootMargin: "-120px 0px -65% 0px",
+                threshold: 0
+            });
+
+            for (var m = 0; m < sections.length; m++) {
+                observer.observe(sections[m].el);
+            }
+            return;
+        }
+
+        // Fallback: rAF-throttled scroll handler.
+        var ticking = false;
+
+        function compute() {
+            ticking = false;
             var scrollY = window.scrollY;
             var headerOffset = 120;
             var active = null;
-
             for (var i = sections.length - 1; i >= 0; i--) {
                 if (sections[i].el.offsetTop - headerOffset <= scrollY) {
                     active = sections[i];
                     break;
                 }
             }
-
-            for (var j = 0; j < sections.length; j++) {
-                sections[j].link.classList.toggle("is-active", sections[j] === active);
-            }
+            setActive(active);
         }
 
-        window.addEventListener("scroll", update, { passive: true });
-        update();
+        function onScroll() {
+            if (ticking) return;
+            ticking = true;
+            window.requestAnimationFrame(compute);
+        }
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        compute();
     }
 
     // ============= Smooth scroll for all local anchors =============
