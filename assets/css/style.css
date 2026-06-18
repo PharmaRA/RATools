@@ -263,8 +263,14 @@ main > section > .container {
 }
 
 .brand-logo {
-    color: var(--color-primary);
     display: inline-flex;
+}
+
+.brand-logo img {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: block;
 }
 
 .site-nav {
