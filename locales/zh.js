@@ -7,7 +7,9 @@
 window.I18N_ZH = {
     meta: {
         title: "RATools — 药品注册开源工具集",
-        description: "RATools — 为药品注册（RA）打造的开源工具集，覆盖 Word 撰写、PDF 定稿、eCTD 发布全流程。"
+        description: "RATools — 为药品注册（RA）打造的开源工具集，覆盖 Word 撰写、PDF 定稿、eCTD 发布全流程。",
+        og_title: "RATools — 药品注册开源工具集",
+        og_description: "Word 撰写、PDF 定稿、eCTD 发布——一套贯穿 RA 全流程的开源工具。"
     },
 
     nav: {

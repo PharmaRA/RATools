@@ -7,7 +7,9 @@
 window.I18N_EN = {
     meta: {
         title: "RATools — Open-source toolkit for pharmaceutical regulatory affairs",
-        description: "RATools is an open-source toolkit for pharmaceutical regulatory affairs, covering Word authoring, PDF finalization, and eCTD publishing."
+        description: "RATools is an open-source toolkit for pharmaceutical regulatory affairs, covering Word authoring, PDF finalization, and eCTD publishing.",
+        og_title: "RATools — Open-source toolkit for pharmaceutical regulatory affairs",
+        og_description: "Word plugin, PDF batch processor, and eCTD publishing system for RA workflow."
     },
 
     nav: {
