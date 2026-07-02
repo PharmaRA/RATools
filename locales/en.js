@@ -120,7 +120,7 @@ window.I18N_EN = {
     },
 
     footer: {
-        copy: "© 2026 PharmaRA · Each project is licensed under the terms declared in its own repository.",
+        copy: "© 2026 PharmaRA",
         org: "PharmaRA on GitHub",
         site_source: "Source for this site"
     }

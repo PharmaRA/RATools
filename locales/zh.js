@@ -120,7 +120,7 @@ window.I18N_ZH = {
     },
 
     footer: {
-        copy: "© 2026 PharmaRA · 三个项目分别采用各自仓库声明的开源协议",
+        copy: "© 2026 PharmaRA",
         org: "PharmaRA on GitHub",
         site_source: "本站源码"
     }
