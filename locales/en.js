@@ -44,7 +44,10 @@ window.I18N_EN = {
 
     projects: {
         release: {
-            latest: "Latest release"
+            latest: "Latest release",
+            changelog: "Changelog",
+            empty: "This release ships without release notes.",
+            full: "View the full changelog on GitHub"
         },
         action: {
             download: "Download",

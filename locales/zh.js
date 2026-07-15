@@ -44,7 +44,10 @@ window.I18N_ZH = {
 
     projects: {
         release: {
-            latest: "最新版本"
+            latest: "最新版本",
+            changelog: "更新日志",
+            empty: "本次发布未附带更新说明。",
+            full: "在 GitHub 查看完整日志"
         },
         action: {
             download: "下载",

@@ -628,7 +628,7 @@ main > section > .container {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
     gap: 64px;
-    align-items: center;
+    align-items: start;
 }
 
 .project-inner--reverse .project-media {
@@ -784,6 +784,138 @@ main > section > .container {
     font-weight: 400;
     font-size: 0.85rem;
     color: var(--text-muted);
+}
+
+/* ==================== Release notes (changelog) ==================== */
+.release-notes {
+    margin-top: 20px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--bg-alt);
+    transition: background-color 160ms ease;
+}
+
+.release-notes summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 18px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.release-notes summary::-webkit-details-marker {
+    display: none;
+}
+
+.release-notes summary:hover {
+    color: var(--color-primary);
+}
+
+.release-notes[open] .faq-icon::after {
+    transform: translate(-50%, -50%) scaleY(0);
+}
+
+.release-notes-title {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.release-notes-tag {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.release-notes-tag:empty {
+    display: none;
+}
+
+.release-notes-body {
+    padding: 0 18px 18px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 0.92rem;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.release-notes-body h1,
+.release-notes-body h2,
+.release-notes-body h3,
+.release-notes-body h4 {
+    margin: 16px 0 8px;
+    color: var(--text-primary);
+    font-size: 0.98rem;
+    font-weight: 600;
+}
+
+.release-notes-body h1:first-child,
+.release-notes-body h2:first-child,
+.release-notes-body h3:first-child,
+.release-notes-body h4:first-child {
+    margin-top: 0;
+}
+
+.release-notes-body ul,
+.release-notes-body ol {
+    margin: 8px 0;
+    padding-left: 22px;
+}
+
+.release-notes-body li {
+    margin: 4px 0;
+}
+
+.release-notes-body p {
+    margin: 8px 0;
+}
+
+.release-notes-body a {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.release-notes-body code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background: var(--bg-base);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 1px 5px;
+}
+
+.release-notes-body pre {
+    background: var(--bg-base);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    overflow-x: auto;
+}
+
+.release-notes-body pre code {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.release-notes-empty {
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 0;
+}
+
+.release-notes-full {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.88rem;
+    font-weight: 500;
 }
 
 .project-status {

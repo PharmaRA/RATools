@@ -62,6 +62,138 @@
         return tag.replace(/^v/i, "");
     }
 
+    /** Current UI language, derived from <html lang>. Falls back to "zh". */
+    function currentLang() {
+        var lang = document.documentElement.getAttribute("lang") || "";
+        return lang.indexOf("en") === 0 ? "en" : "zh";
+    }
+
+    /**
+     * Resolve a dotted i18n key from the pre-loaded dictionaries
+     * (window.I18N_ZH / window.I18N_EN), with a fallback string.
+     */
+    function t(key, fallback) {
+        var dict = currentLang() === "en" ? window.I18N_EN : window.I18N_ZH;
+        var parts = key.split(".");
+        var cursor = dict;
+        for (var i = 0; i < parts.length; i++) {
+            if (cursor == null) return fallback;
+            cursor = cursor[parts[i]];
+        }
+        return (typeof cursor === "string" && cursor) ? cursor : fallback;
+    }
+
+    /** Escape HTML-special characters so raw release text can't inject markup. */
+    function escapeHtml(str) {
+        return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#39;");
+    }
+
+    /** Render inline markdown (links, bold, italic, code) on already-escaped text. */
+    function renderInline(escaped) {
+        return escaped
+            // inline code — protect first so its contents aren't re-processed
+            .replace(/`([^`]+)`/g, function (m, code) {
+                return "<code>" + code + "</code>";
+            })
+            // links [text](url) — only http/https URLs allowed
+            .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, function (m, text, url) {
+                return '<a href="' + url + '" target="_blank" rel="noopener">' + text + "</a>";
+            })
+            // bold
+            .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+            // italic
+            .replace(/(^|[^*])\*([^*]+)\*/g, "$1<em>$2</em>");
+    }
+
+    /**
+     * Minimal, safe Markdown-to-HTML for GitHub release bodies.
+     * Handles headings, unordered/ordered lists, fenced code blocks,
+     * and paragraphs. All text is HTML-escaped before inline formatting,
+     * so no raw HTML from the release survives.
+     */
+    function renderMarkdown(md) {
+        var lines = String(md).replace(/\r\n/g, "\n").split("\n");
+        var html = [];
+        var listType = null; // "ul" | "ol" | null
+        var inCode = false;
+        var codeBuf = [];
+
+        function closeList() {
+            if (listType) {
+                html.push("</" + listType + ">");
+                listType = null;
+            }
+        }
+
+        for (var i = 0; i < lines.length; i++) {
+            var line = lines[i];
+
+            // fenced code block toggle
+            if (/^```/.test(line.trim())) {
+                if (inCode) {
+                    html.push("<pre><code>" + escapeHtml(codeBuf.join("\n")) + "</code></pre>");
+                    codeBuf = [];
+                    inCode = false;
+                } else {
+                    closeList();
+                    inCode = true;
+                }
+                continue;
+            }
+            if (inCode) {
+                codeBuf.push(line);
+                continue;
+            }
+
+            var trimmed = line.trim();
+
+            if (trimmed === "") {
+                closeList();
+                continue;
+            }
+
+            // heading
+            var h = /^(#{1,6})\s+(.*)$/.exec(trimmed);
+            if (h) {
+                closeList();
+                var level = Math.min(h[1].length + 2, 6); // map # -> h3 to keep hierarchy below section titles
+                html.push("<h" + level + ">" + renderInline(escapeHtml(h[2])) + "</h" + level + ">");
+                continue;
+            }
+
+            // unordered list item
+            var ul = /^[-*+]\s+(.*)$/.exec(trimmed);
+            if (ul) {
+                if (listType !== "ul") { closeList(); html.push("<ul>"); listType = "ul"; }
+                html.push("<li>" + renderInline(escapeHtml(ul[1])) + "</li>");
+                continue;
+            }
+
+            // ordered list item
+            var ol = /^\d+\.\s+(.*)$/.exec(trimmed);
+            if (ol) {
+                if (listType !== "ol") { closeList(); html.push("<ol>"); listType = "ol"; }
+                html.push("<li>" + renderInline(escapeHtml(ol[1])) + "</li>");
+                continue;
+            }
+
+            // paragraph
+            closeList();
+            html.push("<p>" + renderInline(escapeHtml(trimmed)) + "</p>");
+        }
+
+        if (inCode) {
+            html.push("<pre><code>" + escapeHtml(codeBuf.join("\n")) + "</code></pre>");
+        }
+        closeList();
+        return html.join("");
+    }
+
     /** Apply fetched release info to the DOM for a given repo. */
     function applyRelease(repo, data) {
         // Find the section with data-repo matching this repo name.
@@ -98,6 +230,52 @@
             var dlBtn = section.querySelector('[data-action="download"]');
             if (dlBtn) dlBtn.href = data.url;
         }
+
+        applyReleaseNotes(repo, data);
+    }
+
+    // Remember the last fetched data per repo so we can re-render the
+    // changelog when the user switches language.
+    var LAST_DATA = {};
+
+    /** Populate (and reveal) the collapsible changelog panel for a repo. */
+    function applyReleaseNotes(repo, data) {
+        LAST_DATA[repo] = data;
+
+        var panel = document.querySelector('.release-notes[data-repo="' + repo + '"]');
+        if (!panel) return;
+
+        // Show the version tag next to the "Changelog" label.
+        var tagEl = panel.querySelector(".release-notes-tag");
+        if (tagEl) tagEl.textContent = data.tag ? "v" + data.tag : "";
+
+        var bodyEl = panel.querySelector(".release-notes-body");
+        if (!bodyEl) return;
+
+        if (data.body) {
+            var full = data.url
+                ? '<a class="release-notes-full" href="' + data.url +
+                  '" target="_blank" rel="noopener">' +
+                  escapeHtml(t("projects.release.full", "View the full changelog on GitHub")) +
+                  "</a>"
+                : "";
+            bodyEl.innerHTML = renderMarkdown(data.body) + full;
+        } else {
+            bodyEl.innerHTML = '<p class="release-notes-empty">' +
+                escapeHtml(t("projects.release.empty", "This release ships without release notes.")) +
+                "</p>";
+        }
+
+        panel.hidden = false;
+    }
+
+    /** Re-render all known changelog panels (e.g. after a language switch). */
+    function refreshReleaseNotes() {
+        for (var repo in LAST_DATA) {
+            if (LAST_DATA.hasOwnProperty(repo)) {
+                applyReleaseNotes(repo, LAST_DATA[repo]);
+            }
+        }
     }
 
     /** Fetch latest release for a single repo. */
@@ -119,7 +297,8 @@
                 var data = {
                     tag: normalizeTag(json.tag_name),
                     url: json.html_url || "",
-                    date: formatDate(json.published_at)
+                    date: formatDate(json.published_at),
+                    body: (json.body || "").trim()
                 };
                 writeCache(repo, data);
                 applyRelease(repo, data);
@@ -136,6 +315,10 @@
         for (var i = 0; i < REPOS.length; i++) {
             fetchRelease(REPOS[i]);
         }
+
+        // Re-render changelog panels when the UI language changes, so the
+        // "empty" / "full changelog" labels follow the active locale.
+        document.addEventListener("ratools:langchange", refreshReleaseNotes);
     }
 
     if (document.readyState === "loading") {
