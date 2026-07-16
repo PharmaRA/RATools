@@ -1074,25 +1074,6 @@ code {
     background: var(--tint-primary-soft);
 }
 
-.repo-stars {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 12px;
-    border: 1px solid var(--border-strong);
-    border-radius: 999px;
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-    font-weight: 500;
-    line-height: 1;
-    transition: border-color 0.15s ease, color 0.15s ease;
-}
-
-.repo-stars:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-}
-
 @media (max-width: 960px) {
     .project-inner {
         grid-template-columns: 1fr;
