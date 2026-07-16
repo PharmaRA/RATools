@@ -1385,6 +1385,13 @@ code {
     }
 
     .workflow-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 32px;
+    }
+
+    .workflow-arrow svg {
         transform: rotate(90deg);
     }
 }
