@@ -20,7 +20,8 @@ window.I18N_EN = {
         ectd: "eCTD",
         faq: "FAQ",
         lang: "中",
-        theme: "Toggle color theme"
+        theme: "Toggle color theme",
+        top: "Back to top"
     },
 
     hero: {

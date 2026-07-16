@@ -20,7 +20,8 @@ window.I18N_ZH = {
         ectd: "eCTD",
         faq: "常见问题",
         lang: "EN",
-        theme: "切换深浅色主题"
+        theme: "切换深浅色主题",
+        top: "回到顶部"
     },
 
     hero: {

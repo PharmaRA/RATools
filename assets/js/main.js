@@ -195,12 +195,41 @@
         });
     }
 
+    // ============= Back to top =============
+    function initBackToTop() {
+        var btn = document.getElementById("back-to-top");
+        if (!btn) return;
+
+        var ticking = false;
+
+        function apply() {
+            ticking = false;
+            btn.classList.toggle("is-visible", window.scrollY > window.innerHeight);
+        }
+
+        function onScroll() {
+            if (ticking) return;
+            ticking = true;
+            window.requestAnimationFrame(apply);
+        }
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        apply();
+
+        btn.addEventListener("click", function () {
+            var prefersReduced = window.matchMedia &&
+                window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
+        });
+    }
+
     // ============= Init =============
     function init() {
         initHeaderShadow();
         initNavHighlight();
         initSmoothScroll();
         initMobileNav();
+        initBackToTop();
     }
 
     if (document.readyState === "loading") {
