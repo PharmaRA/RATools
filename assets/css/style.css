@@ -26,6 +26,9 @@
     --tint-primary-soft: rgba(26, 77, 140, 0.06);
     --tint-accent: rgba(10, 166, 125, 0.14);
 
+    --media-filter: none;
+    --media-border: var(--border-subtle);
+
     --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04);
     --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.06);
     --shadow-header: 0 1px 0 rgba(0, 0, 0, 0.04);
@@ -71,6 +74,10 @@
         --tint-primary: rgba(91, 155, 213, 0.14);
         --tint-primary-soft: rgba(91, 155, 213, 0.1);
         --tint-accent: rgba(45, 212, 167, 0.16);
+
+        /* Bright UI screenshots glare on a dark page — tone them down. */
+        --media-filter: brightness(0.85) contrast(1.05);
+        --media-border: var(--border-strong);
     }
 
     /* Hero glow uses the dark-friendly primary tint. */
@@ -653,7 +660,8 @@ code {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-card);
     background: var(--bg-elevated);
-    border: 1px solid var(--border-subtle);
+    border: 1px solid var(--media-border);
+    filter: var(--media-filter);
 }
 
 .project-body .section-title {
