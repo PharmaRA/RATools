@@ -19,7 +19,8 @@ window.I18N_ZH = {
         pdf: "PDF",
         ectd: "eCTD",
         faq: "常见问题",
-        lang: "EN"
+        lang: "EN",
+        theme: "切换深浅色主题"
     },
 
     hero: {

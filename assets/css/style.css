@@ -49,12 +49,16 @@
     --header-height: 64px;
 }
 
-/* ---------- Dark mode (token remap only) ---------- */
+/* ---------- Dark mode (token remap only) ----------
+   Two entry points share the same token set (keep them in sync):
+   1. System preference, unless the user forced light via the toggle.
+   2. User forced dark via the toggle (html[data-theme="dark"]). */
 @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
         --color-primary: #5b9bd5;
         --color-primary-hover: #7cb3e0;
         --color-accent: #2dd4a7;
+        --color-status-dev: #f5a623;
 
         --text-primary: #e6e9ed;
         --text-secondary: #b5bcc4;
@@ -83,6 +87,40 @@
         --media-filter: brightness(0.85) contrast(1.05);
         --media-border: var(--border-strong);
     }
+}
+
+:root[data-theme="dark"] {
+    --color-primary: #5b9bd5;
+    --color-primary-hover: #7cb3e0;
+    --color-accent: #2dd4a7;
+    --color-status-dev: #f5a623;
+
+    --text-primary: #e6e9ed;
+    --text-secondary: #b5bcc4;
+    --text-muted: #8a929b;
+
+    --bg-base: #14171c;
+    --bg-alt: #1b1f26;
+    --bg-elevated: #1f242c;
+    --bg-header: rgba(20, 23, 28, 0.85);
+    --bg-header-solid: rgba(20, 23, 28, 0.98);
+
+    --border-subtle: #2a2f37;
+    --border-strong: #3a414b;
+
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --shadow-header: 0 1px 0 rgba(0, 0, 0, 0.4);
+
+    --tint-primary: rgba(91, 155, 213, 0.14);
+    --tint-primary-soft: rgba(91, 155, 213, 0.1);
+    --tint-accent: rgba(45, 212, 167, 0.16);
+
+    --hero-glow: rgba(91, 155, 213, 0.1);
+
+    /* Bright UI screenshots glare on a dark page — tone them down. */
+    --media-filter: brightness(0.85) contrast(1.05);
+    --media-border: var(--border-strong);
 }
 
 /* ---------- Reset + base ---------- */
@@ -321,6 +359,49 @@ code {
 .lang-toggle:hover {
     border-color: var(--color-primary);
     color: var(--color-primary);
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 33px;
+    height: 33px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.theme-toggle:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* Show the icon for the theme you would switch TO:
+   moon in light mode, sun in dark mode. */
+.theme-toggle .theme-icon-sun {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-toggle .theme-icon-sun {
+        display: block;
+    }
+
+    :root:not([data-theme="light"]) .theme-toggle .theme-icon-moon {
+        display: none;
+    }
+}
+
+:root[data-theme="dark"] .theme-toggle .theme-icon-sun {
+    display: block;
+}
+
+:root[data-theme="dark"] .theme-toggle .theme-icon-moon {
+    display: none;
 }
 
 .github-link {

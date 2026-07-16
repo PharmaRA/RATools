@@ -19,7 +19,8 @@ window.I18N_EN = {
         pdf: "PDF",
         ectd: "eCTD",
         faq: "FAQ",
-        lang: "中"
+        lang: "中",
+        theme: "Toggle color theme"
     },
 
     hero: {
