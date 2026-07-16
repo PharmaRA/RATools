@@ -197,14 +197,15 @@ code {
     padding: 0 24px;
 }
 
-main > section {
+/* Only the hero fills the first viewport; other sections size to content. */
+.hero {
     min-height: calc(100vh - var(--header-height));
     min-height: calc(100svh - var(--header-height));
     display: flex;
     align-items: center;
 }
 
-main > section > .container {
+.hero > .container {
     width: 100%;
 }
 
