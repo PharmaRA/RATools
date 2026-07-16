@@ -8,6 +8,7 @@
     --color-primary: #1a4d8c;
     --color-primary-hover: #143d70;
     --color-accent: #0aa67d;
+    --color-status-dev: #b45309;
 
     --text-primary: #212529;
     --text-secondary: #495057;
@@ -26,6 +27,7 @@
     --tint-primary-soft: rgba(26, 77, 140, 0.06);
     --tint-accent: rgba(10, 166, 125, 0.14);
 
+    --hero-glow: rgba(26, 77, 140, 0.07);
     --media-filter: none;
     --media-border: var(--border-subtle);
 
@@ -75,16 +77,11 @@
         --tint-primary-soft: rgba(91, 155, 213, 0.1);
         --tint-accent: rgba(45, 212, 167, 0.16);
 
+        --hero-glow: rgba(91, 155, 213, 0.1);
+
         /* Bright UI screenshots glare on a dark page — tone them down. */
         --media-filter: brightness(0.85) contrast(1.05);
         --media-border: var(--border-strong);
-    }
-
-    /* Hero glow uses the dark-friendly primary tint. */
-    .hero {
-        background:
-            radial-gradient(1200px 480px at 50% -240px, rgba(91, 155, 213, 0.1), transparent 70%),
-            var(--bg-base);
     }
 }
 
@@ -575,7 +572,7 @@ code {
 .workflow-card:focus-visible {
     transform: translateY(-2px);
     border-color: var(--color-primary);
-    box-shadow: 0 4px 12px rgba(26, 77, 140, 0.08);
+    box-shadow: var(--shadow-card-hover);
 }
 
 .workflow-step-num {
@@ -937,7 +934,7 @@ code {
 }
 
 .project-status--dev {
-    color: #b45309;
+    color: var(--color-status-dev);
 }
 
 .status-dot {
@@ -1093,7 +1090,7 @@ code {
 .hero {
     padding: 96px 0;
     background:
-        radial-gradient(1200px 480px at 50% -240px, rgba(26, 77, 140, 0.07), transparent 70%),
+        radial-gradient(1200px 480px at 50% -240px, var(--hero-glow), transparent 70%),
         var(--bg-base);
     border-bottom: 1px solid var(--border-subtle);
 }
