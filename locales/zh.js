@@ -52,7 +52,8 @@ window.I18N_ZH = {
         action: {
             download: "下载",
             source: "源码",
-            issue: "反馈"
+            issue: "反馈",
+            stars: "GitHub Star 数"
         },
 
         word: {

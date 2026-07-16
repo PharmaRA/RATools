@@ -17,17 +17,25 @@
         "RATools-for-PDF"
     ];
 
+    // Repos whose star count is shown; includes in-development projects.
+    var STAR_REPOS = [
+        "RATools-for-Word",
+        "RATools-for-PDF",
+        "RATools-for-eCTD"
+    ];
+
     var CACHE_PREFIX = "ratools.release.";
+    var STARS_CACHE_PREFIX = "ratools.stars.";
     var CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
-    /** Try reading cached release from sessionStorage. */
-    function readCache(repo) {
+    /** Try reading a cached entry from sessionStorage by full key. */
+    function readCache(key) {
         try {
-            var raw = sessionStorage.getItem(CACHE_PREFIX + repo);
+            var raw = sessionStorage.getItem(key);
             if (!raw) return null;
             var entry = JSON.parse(raw);
             if (Date.now() - entry.ts > CACHE_TTL) {
-                sessionStorage.removeItem(CACHE_PREFIX + repo);
+                sessionStorage.removeItem(key);
                 return null;
             }
             return entry.data;
@@ -36,10 +44,10 @@
         }
     }
 
-    /** Write release info to sessionStorage. */
-    function writeCache(repo, data) {
+    /** Write an entry to sessionStorage by full key. */
+    function writeCache(key, data) {
         try {
-            sessionStorage.setItem(CACHE_PREFIX + repo, JSON.stringify({
+            sessionStorage.setItem(key, JSON.stringify({
                 ts: Date.now(),
                 data: data
             }));
@@ -280,7 +288,7 @@
 
     /** Fetch latest release for a single repo. */
     function fetchRelease(repo) {
-        var cached = readCache(repo);
+        var cached = readCache(CACHE_PREFIX + repo);
         if (cached) {
             applyRelease(repo, cached);
             return;
@@ -300,11 +308,54 @@
                     date: formatDate(json.published_at),
                     body: (json.body || "").trim()
                 };
-                writeCache(repo, data);
+                writeCache(CACHE_PREFIX + repo, data);
                 applyRelease(repo, data);
             })
             .catch(function () {
                 // Silently degrade — HTML already has fallback links.
+            });
+    }
+
+    /** Format a star count the way GitHub does (1234 -> "1.2k"). */
+    function formatStars(count) {
+        if (count >= 1000) {
+            return (Math.round(count / 100) / 10) + "k";
+        }
+        return String(count);
+    }
+
+    /** Reveal the star chip for a repo with its fetched count. */
+    function applyStars(repo, count) {
+        if (typeof count !== "number" || count < 1) return;
+        var chips = document.querySelectorAll('[data-stars-repo="' + repo + '"]');
+        for (var i = 0; i < chips.length; i++) {
+            var countEl = chips[i].querySelector(".repo-stars-count");
+            if (countEl) countEl.textContent = formatStars(count);
+            chips[i].hidden = false;
+        }
+    }
+
+    /** Fetch repo metadata (star count) for a single repo. */
+    function fetchStars(repo) {
+        var cached = readCache(STARS_CACHE_PREFIX + repo);
+        if (cached !== null) {
+            applyStars(repo, cached);
+            return;
+        }
+
+        fetch("https://api.github.com/repos/PharmaRA/" + repo)
+            .then(function (res) {
+                if (!res.ok) throw new Error("HTTP " + res.status);
+                return res.json();
+            })
+            .then(function (json) {
+                var count = json.stargazers_count;
+                if (typeof count !== "number") return;
+                writeCache(STARS_CACHE_PREFIX + repo, count);
+                applyStars(repo, count);
+            })
+            .catch(function () {
+                // Silently degrade — the chip simply stays hidden.
             });
     }
 
@@ -314,6 +365,10 @@
 
         for (var i = 0; i < REPOS.length; i++) {
             fetchRelease(REPOS[i]);
+        }
+
+        for (var j = 0; j < STAR_REPOS.length; j++) {
+            fetchStars(STAR_REPOS[j]);
         }
 
         // Re-render changelog panels when the UI language changes, so the

@@ -67,8 +67,15 @@ assert.doesNotMatch(
     "eCTD feedback link should be hidden while it is in development"
 );
 
+const releaseRepos = releasesJs.match(/var REPOS = \[([^\]]*)\]/);
+
+assert.ok(
+    releaseRepos,
+    "release loader should declare its release repo list"
+);
+
 assert.doesNotMatch(
-    releasesJs,
+    releaseRepos[1],
     /RATools-for-eCTD/,
-    "release loader should skip eCTD while version information is hidden"
+    "release loader should skip eCTD from release lookups while it is in development"
 );
