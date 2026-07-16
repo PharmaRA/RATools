@@ -59,6 +59,7 @@ window.I18N_ZH = {
             eyebrow: "01 · WRITING",
             name: "RATools for Word",
             tagline: "为药品注册而生的 Word 效率插件，沉淀一线 RA 撰写经验。",
+            screenshot_alt: "RATools for Word 截图：Word 功能区中的 RATools 选项卡，包含编号标题、样式与宏工具",
             features: [
                 "样式快速应用：基于 .dotx 标准模板，统一文档格式",
                 "常用选项面板：聚合分散在 Word 各选项卡的高频功能",
@@ -71,6 +72,7 @@ window.I18N_ZH = {
             eyebrow: "02 · FINALIZING",
             name: "RATools for PDF",
             tagline: "面向 eCTD 递交场景的桌面端 PDF 批量处理工具。",
+            screenshot_alt: "RATools for PDF 截图：批量处理主界面，包含功能模块、待处理队列与处理规则选项",
             features: [
                 "中国 / 美国 eCTD 预设规则，可保存「我的常用」组合",
                 "批量预检：扫描结构状态，标记建议处理项与人工复核项",
@@ -84,6 +86,7 @@ window.I18N_ZH = {
             eyebrow: "03 · PUBLISHING",
             name: "RATools for eCTD",
             tagline: "基于 .NET + React 的 eCTD 发布系统，覆盖 application / sequence 全生命周期。",
+            screenshot_alt: "RATools for eCTD 示意图：eCTD 发布系统的申请、序列与发布流程",
             features: [
                 "application / sequence 全生命周期管理与导入",
                 "基于模板的应用初始化（us-fda-ectd-3.2.2）",

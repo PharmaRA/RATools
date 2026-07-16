@@ -59,6 +59,7 @@ window.I18N_EN = {
             eyebrow: "01 · AUTHORING",
             name: "RATools for Word",
             tagline: "A Word add-in built for pharmaceutical regulatory affairs, distilled from front-line authoring experience.",
+            screenshot_alt: "Screenshot of RATools for Word: the RATools ribbon tab in Word with numbered-heading, style, and macro tools",
             features: [
                 "Quick style application: a .dotx template that standardizes document formatting",
                 "Frequent-action panel: aggregates high-use commands scattered across Word's tabs",
@@ -71,6 +72,7 @@ window.I18N_EN = {
             eyebrow: "02 · FINALIZING",
             name: "RATools for PDF",
             tagline: "A desktop batch processor for eCTD-ready PDFs.",
+            screenshot_alt: "Screenshot of RATools for PDF: the main batch-processing window with feature modules, file queue, and rule options",
             features: [
                 "Built-in CN / US eCTD presets with a savable \"My favorites\" rule set",
                 "Batch precheck: scan structural state and flag suggested or manual-review items",
@@ -84,6 +86,7 @@ window.I18N_EN = {
             eyebrow: "03 · PUBLISHING",
             name: "RATools for eCTD",
             tagline: ".NET + React eCTD publishing system covering the full application / sequence lifecycle.",
+            screenshot_alt: "Illustration of RATools for eCTD: application, sequence, and publishing workflow of the eCTD system",
             features: [
                 "Application and sequence lifecycle management plus existing-workspace import",
                 "Template-driven application setup (us-fda-ectd-3.2.2)",

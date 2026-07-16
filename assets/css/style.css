@@ -650,6 +650,12 @@ code {
     justify-content: center;
 }
 
+.project-media-link {
+    display: block;
+    cursor: zoom-in;
+    border-radius: var(--radius-md);
+}
+
 .project-media img {
     width: 100%;
     max-width: 480px;
