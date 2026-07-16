@@ -48,14 +48,14 @@ for (const locale of [zh, en]) {
 
 assert.match(
     css,
-    /main\s*>\s*section\s*\{[\s\S]*min-height:\s*calc\(100svh - var\(--header-height\)\);[\s\S]*display:\s*flex;[\s\S]*align-items:\s*center;/,
-    "each main section should fill the opened viewport beneath the sticky header"
+    /\.hero\s*\{[\s\S]*min-height:\s*calc\(100svh - var\(--header-height\)\);[\s\S]*display:\s*flex;[\s\S]*align-items:\s*center;/,
+    "the hero should fill the opened viewport beneath the sticky header"
 );
 
 assert.match(
     css,
-    /main\s*>\s*section\s*>\s*\.container\s*\{[\s\S]*width:\s*100%;/,
-    "section containers should keep their full content width inside viewport-height sections"
+    /\.hero\s*>\s*\.container\s*\{[\s\S]*width:\s*100%;/,
+    "the hero container should keep its full content width inside the viewport-height hero"
 );
 
 assert.doesNotMatch(
