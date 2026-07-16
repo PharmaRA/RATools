@@ -1092,6 +1092,31 @@ code {
     margin: 0;
 }
 
+/* ---------- <details> expand animation ----------
+   Progressive enhancement: only in browsers that support
+   interpolate-size, and only for users who allow motion. */
+@supports (interpolate-size: allow-keywords) {
+    @media (prefers-reduced-motion: no-preference) {
+        :root {
+            interpolate-size: allow-keywords;
+        }
+
+        .faq-item::details-content,
+        .release-notes::details-content {
+            block-size: 0;
+            overflow-y: clip;
+            transition:
+                content-visibility 240ms allow-discrete,
+                block-size 240ms ease;
+        }
+
+        .faq-item[open]::details-content,
+        .release-notes[open]::details-content {
+            block-size: auto;
+        }
+    }
+}
+
 /* ==================== Hero ==================== */
 .hero {
     padding: 96px 0;
