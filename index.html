@@ -62,6 +62,22 @@
                 "applicationCategory": "BusinessApplication",
                 "url": "https://github.com/PharmaRA/RATools-for-eCTD",
                 "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "FDA Downloader",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Windows",
+                "url": "https://github.com/Fiveo9/FDADownloader",
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "EMA Downloader",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Windows, macOS, Linux",
+                "url": "https://github.com/Fiveo9/EMADownloader",
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
             }
         ]
     }
@@ -84,6 +100,7 @@
                 <a href="#word" data-i18n="nav.word">Word</a>
                 <a href="#pdf" data-i18n="nav.pdf">PDF</a>
                 <a href="#ectd" data-i18n="nav.ectd">eCTD</a>
+                <a href="#other" data-i18n="nav.other">其他</a>
                 <a href="#faq" data-i18n="nav.faq">常见问题</a>
             </nav>
 
@@ -355,6 +372,98 @@
                             </a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== OTHER UTILITIES ==================== -->
+        <section id="other" class="other-tools" aria-labelledby="other-title">
+            <div class="container">
+                <header class="section-head">
+                    <p class="section-eyebrow" data-i18n="other.eyebrow">UTILITIES</p>
+                    <h2 id="other-title" class="section-title" data-i18n="other.title">其他实用工具</h2>
+                    <p class="section-subtitle" data-i18n="other.subtitle">围绕药政法规情报与指导原则收集整理的开源小工具，助力日常 RA 调研与申报准备。</p>
+                </header>
+
+                <div class="other-grid">
+                    <article class="other-card">
+                        <div class="other-card-header">
+                            <div class="other-card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 7a2 2 0 0 1 2-2h6l3 3h11a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" />
+                                    <path d="M16 13v9" />
+                                    <path d="M12.5 18.5l3.5 3.5 3.5-3.5" />
+                                </svg>
+                            </div>
+                            <div class="other-card-meta">
+                                <p class="other-card-eyebrow" data-i18n="other.fda.eyebrow">01 · FDA GUIDELINES</p>
+                                <h3 class="other-card-title" data-i18n="other.fda.name">FDA Downloader</h3>
+                            </div>
+                        </div>
+                        <p class="other-card-tagline" data-i18n="other.fda.tagline">FDA 指导原则自动化下载与分类整理工具，一键生成本地索引。</p>
+                        <ul class="badge-list" aria-label="Tech stack">
+                            <li class="badge">Python</li>
+                            <li class="badge">Chrome</li>
+                            <li class="badge">Excel</li>
+                            <li class="badge">CLI</li>
+                        </ul>
+                        <ul class="feature-list" data-i18n-list="other.fda.features">
+                            <li>针对 FDA Guidance 官方页面自动化筛选、导出清单与文件批量下载</li>
+                            <li>智能防重复下载与网络自适应等待，保障抓取稳定可靠</li>
+                            <li>按关键词规则将下载文件自动整理为多层级分类资料库</li>
+                            <li>自动生成带本地文件超链接的 Excel 索引，点击直达本地 PDF</li>
+                        </ul>
+                        <div class="other-card-footer">
+                            <div class="project-actions">
+                                <a class="btn btn--primary" href="https://github.com/Fiveo9/FDADownloader" target="_blank" rel="noopener" data-i18n="projects.action.source">源码</a>
+                                <a class="btn btn--ghost" href="https://github.com/Fiveo9/FDADownloader/issues" target="_blank" rel="noopener" data-i18n="projects.action.issue">反馈</a>
+                                <a class="repo-stars" data-stars-repo="Fiveo9/FDADownloader" href="https://github.com/Fiveo9/FDADownloader/stargazers" target="_blank" rel="noopener" data-i18n="projects.action.stars" data-i18n-attr="aria-label" aria-label="GitHub Star 数" hidden>
+                                    <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg>
+                                    <span class="repo-stars-count"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="other-card">
+                        <div class="other-card-header">
+                            <div class="other-card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 4h13l7 7v17H6z" />
+                                    <path d="M19 4v7h7" />
+                                    <path d="M16 14v10" />
+                                    <path d="M12 20l4 4 4-4" />
+                                </svg>
+                            </div>
+                            <div class="other-card-meta">
+                                <p class="other-card-eyebrow" data-i18n="other.ema.eyebrow">02 · EMA GUIDELINES</p>
+                                <h3 class="other-card-title" data-i18n="other.ema.name">EMA Downloader</h3>
+                            </div>
+                        </div>
+                        <p class="other-card-tagline" data-i18n="other.ema.tagline">欧洲药品管理局（EMA）监管文件与科学指导原则自动化同步整理工具。</p>
+                        <ul class="badge-list" aria-label="Tech stack">
+                            <li class="badge">Python</li>
+                            <li class="badge">SQLite</li>
+                            <li class="badge">Web UI</li>
+                            <li class="badge">CLI</li>
+                        </ul>
+                        <ul class="feature-list" data-i18n-list="other.ema.features">
+                            <li>基于 EMA 官方结构化 JSON 数据源，毫秒级增量识别与断点续传</li>
+                            <li>两级智能分类归档（质量 CMC、非临床、临床有效性与安全性等）</li>
+                            <li>自动生成多工作表 Excel 索引（内置本地一键直达超链接）与 SQLite 数据库</li>
+                            <li>支持本地 Web 浏览器图形界面与命令行双模式，提供免安装绿色版</li>
+                        </ul>
+                        <div class="other-card-footer">
+                            <div class="project-actions">
+                                <a class="btn btn--primary" href="https://github.com/Fiveo9/EMADownloader" target="_blank" rel="noopener" data-i18n="projects.action.source">源码</a>
+                                <a class="btn btn--ghost" href="https://github.com/Fiveo9/EMADownloader/issues" target="_blank" rel="noopener" data-i18n="projects.action.issue">反馈</a>
+                                <a class="repo-stars" data-stars-repo="Fiveo9/EMADownloader" href="https://github.com/Fiveo9/EMADownloader/stargazers" target="_blank" rel="noopener" data-i18n="projects.action.stars" data-i18n-attr="aria-label" aria-label="GitHub Star 数" hidden>
+                                    <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg>
+                                    <span class="repo-stars-count"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>

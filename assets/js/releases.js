@@ -17,11 +17,13 @@
         "RATools-for-PDF"
     ];
 
-    // Repos whose star count is shown; includes in-development projects.
+    // Repos whose star count is shown; includes in-development projects and utilities.
     var STAR_REPOS = [
         "RATools-for-Word",
         "RATools-for-PDF",
-        "RATools-for-eCTD"
+        "RATools-for-eCTD",
+        "Fiveo9/FDADownloader",
+        "Fiveo9/EMADownloader"
     ];
 
     var CACHE_PREFIX = "ratools.release.";
@@ -343,7 +345,9 @@
             return;
         }
 
-        fetch("https://api.github.com/repos/PharmaRA/" + repo)
+        var repoPath = repo.indexOf("/") !== -1 ? repo : "PharmaRA/" + repo;
+
+        fetch("https://api.github.com/repos/" + repoPath)
             .then(function (res) {
                 if (!res.ok) throw new Error("HTTP " + res.status);
                 return res.json();

@@ -57,6 +57,13 @@ python -m http.server 8000
 | RATools for PDF | [PharmaRA/RATools-for-PDF](https://github.com/PharmaRA/RATools-for-PDF) | Python |
 | RATools for eCTD | [PharmaRA/RATools-for-eCTD](https://github.com/PharmaRA/RATools-for-eCTD) | C# + TypeScript |
 
+## 其他实用工具
+
+| 项目 | 仓库 | 语言 | 说明 |
+|------|------|------|------|
+| FDA Downloader | [Fiveo9/FDADownloader](https://github.com/Fiveo9/FDADownloader) | Python | FDA 指导原则自动化下载与分类整理 |
+| EMA Downloader | [Fiveo9/EMADownloader](https://github.com/Fiveo9/EMADownloader) | Python | 欧洲药品管理局（EMA）监管文件与科学指导原则自动化同步整理 |
+
 ## License
 
 本门户站点代码采用 MIT 协议。三个工具项目各自采用其仓库中声明的许可证（GPL-3.0 / AGPL-3.0）。

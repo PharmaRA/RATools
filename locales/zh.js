@@ -18,6 +18,7 @@ window.I18N_ZH = {
         word: "Word",
         pdf: "PDF",
         ectd: "eCTD",
+        other: "其他",
         faq: "常见问题",
         lang: "EN",
         theme: "切换深浅色主题",
@@ -98,6 +99,34 @@ window.I18N_ZH = {
                 "FDA eCTD 3.2.2 backbone 生成，发布产物含 report / index / checksum / package.zip"
             ],
             status: "正在开发中"
+        }
+    },
+
+    other: {
+        eyebrow: "UTILITIES",
+        title: "其他实用工具",
+        subtitle: "围绕药政法规情报与指导原则收集整理的开源小工具，助力日常 RA 调研与申报准备。",
+        fda: {
+            eyebrow: "01 · FDA GUIDELINES",
+            name: "FDA Downloader",
+            tagline: "FDA 指导原则自动化下载与分类整理工具，一键生成本地索引。",
+            features: [
+                "针对 FDA Guidance 官方页面自动化筛选、导出清单与文件批量下载",
+                "智能防重复下载与网络自适应等待，保障抓取稳定可靠",
+                "按关键词规则将下载文件自动整理为多层级分类资料库",
+                "自动生成带本地文件超链接的 Excel 索引，点击直达本地 PDF"
+            ]
+        },
+        ema: {
+            eyebrow: "02 · EMA GUIDELINES",
+            name: "EMA Downloader",
+            tagline: "欧洲药品管理局（EMA）监管文件与科学指导原则自动化同步整理工具。",
+            features: [
+                "基于 EMA 官方结构化 JSON 数据源，毫秒级增量识别与断点续传",
+                "两级智能分类归档（质量 CMC、非临床、临床有效性与安全性等）",
+                "自动生成多工作表 Excel 索引（内置本地一键直达超链接）与 SQLite 数据库",
+                "支持本地 Web 浏览器图形界面与命令行双模式，提供免安装绿色版"
+            ]
         }
     },
 

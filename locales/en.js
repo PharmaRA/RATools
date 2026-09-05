@@ -18,6 +18,7 @@ window.I18N_EN = {
         word: "Word",
         pdf: "PDF",
         ectd: "eCTD",
+        other: "Other",
         faq: "FAQ",
         lang: "中",
         theme: "Toggle color theme",
@@ -98,6 +99,34 @@ window.I18N_EN = {
                 "FDA eCTD 3.2.2 backbone generation; publish artifacts include report / index / checksum / package.zip"
             ],
             status: "In development"
+        }
+    },
+
+    other: {
+        eyebrow: "UTILITIES",
+        title: "Other Utilities",
+        subtitle: "Open-source utility tools for regulatory intelligence and guidance document management, accelerating everyday RA research and submission preparation.",
+        fda: {
+            eyebrow: "01 · FDA GUIDELINES",
+            name: "FDA Downloader",
+            tagline: "Automated download and categorization tool for FDA Guidance Documents, generating instant local indexes.",
+            features: [
+                "Automated filtering, list export, and batch downloading from official FDA Guidance pages",
+                "Smart duplicate detection and adaptive request pacing for reliable fetching",
+                "Rule-based keyword categorization into structured multi-level folders",
+                "Auto-generates Excel index with clickable local hyperlinks directly opening target PDFs"
+            ]
+        },
+        ema: {
+            eyebrow: "02 · EMA GUIDELINES",
+            name: "EMA Downloader",
+            tagline: "Automated synchronization and organization tool for European Medicines Agency (EMA) regulatory documents and scientific guidelines.",
+            features: [
+                "Direct integration with official EMA structured JSON data; millisecond-level incremental sync & resume",
+                "Two-tier intelligent classification (Quality CMC, Nonclinical, Clinical Efficacy & Safety, etc.)",
+                "Auto-generates multi-sheet formatted Excel index (with one-click local hyperlinks) and SQLite database",
+                "Dual support for local browser Web UI and CLI, with standalone portable executable available"
+            ]
         }
     },
 
