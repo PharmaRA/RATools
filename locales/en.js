@@ -30,7 +30,15 @@ window.I18N_EN = {
         title: "Open-source toolkit built for pharmaceutical regulatory affairs",
         subtitle: "Three tools cover authoring, finalization, and eCTD publishing. Built from front-line RA experience, free and open source.",
         cta_primary: "See the workflow",
-        cta_secondary: "Visit GitHub"
+        cta_secondary: "Visit GitHub",
+        standard_nmpa: "NMPA eSubmissions",
+        pipeline_title: "RATools Regulatory Pipeline",
+        pipeline_step1_name: "Word Authoring",
+        pipeline_step1_sub: "Standard Styles & Macros",
+        pipeline_step2_name: "PDF Finalizing",
+        pipeline_step2_sub: "Batch Precheck & Links",
+        pipeline_step3_name: "eCTD Publishing",
+        pipeline_step3_sub: "FDA 3.2.2 & Packaging"
     },
 
     workflow: {

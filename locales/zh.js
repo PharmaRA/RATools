@@ -30,7 +30,15 @@ window.I18N_ZH = {
         title: "为药品注册而生的开源工具集",
         subtitle: "三件套覆盖文档撰写 → 文档定稿 → eCTD 发布，沉淀一线 RA 经验，免费开源。",
         cta_primary: "查看工作流",
-        cta_secondary: "访问 GitHub 主页"
+        cta_secondary: "访问 GitHub 主页",
+        standard_nmpa: "NMPA 电子申报规范",
+        pipeline_title: "RATools 药政申报流水线",
+        pipeline_step1_name: "Word 撰写",
+        pipeline_step1_sub: "样式统一 · 格式保护",
+        pipeline_step2_name: "PDF 定稿",
+        pipeline_step2_sub: "批量预检 · 书签超链",
+        pipeline_step3_name: "eCTD 发布",
+        pipeline_step3_sub: "FDA 3.2.2 · 骨架打包"
     },
 
     workflow: {
