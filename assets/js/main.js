@@ -322,6 +322,49 @@
         });
     }
 
+    // ============= Scroll Progress Bar =============
+    function initScrollProgress() {
+        var bar = document.getElementById("scroll-progress");
+        if (!bar) return;
+
+        var ticking = false;
+        function update() {
+            ticking = false;
+            var docEl = document.documentElement;
+            var total = docEl.scrollHeight - docEl.clientHeight;
+            var progress = total > 0 ? (window.scrollY / total) * 100 : 0;
+            bar.style.width = Math.min(100, Math.max(0, progress)) + "%";
+        }
+
+        window.addEventListener("scroll", function () {
+            if (!ticking) {
+                ticking = true;
+                window.requestAnimationFrame(update);
+            }
+        }, { passive: true });
+        update();
+    }
+
+    // ============= Keyboard Shortcuts =============
+    function initShortcuts() {
+        document.addEventListener("keydown", function (e) {
+            if (e.altKey || e.ctrlKey || e.metaKey) return;
+            var tag = e.target.tagName;
+            if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || e.target.isContentEditable) {
+                return;
+            }
+
+            var key = e.key ? e.key.toLowerCase() : "";
+            if (key === "t") {
+                var themeBtn = document.getElementById("theme-toggle");
+                if (themeBtn) themeBtn.click();
+            } else if (key === "l") {
+                var langBtn = document.getElementById("lang-toggle");
+                if (langBtn) langBtn.click();
+            }
+        });
+    }
+
     // ============= Init =============
     function init() {
         initHeaderShadow();
@@ -331,6 +374,8 @@
         initBackToTop();
         initLightbox();
         initCopyButtons();
+        initScrollProgress();
+        initShortcuts();
     }
 
     if (document.readyState === "loading") {

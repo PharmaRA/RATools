@@ -21,7 +21,7 @@ window.I18N_ZH = {
         other: "其他",
         faq: "常见问题",
         lang: "EN",
-        theme: "切换深浅色主题",
+        theme: "切换深浅色主题 (快捷键: T)",
         top: "回到顶部"
     },
 

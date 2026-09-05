@@ -21,7 +21,7 @@ window.I18N_EN = {
         other: "Other",
         faq: "FAQ",
         lang: "中",
-        theme: "Toggle color theme",
+        theme: "Toggle color theme (Shortcut: T)",
         top: "Back to top"
     },
 
