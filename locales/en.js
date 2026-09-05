@@ -74,10 +74,15 @@ window.I18N_EN = {
             issue: "Issues",
             stars: "GitHub stars"
         },
+        media: {
+            zoom: "Click to enlarge",
+            lightbox_close: "Close preview"
+        },
 
         word: {
             eyebrow: "01 · AUTHORING",
             name: "RATools for Word",
+            window_title: "RATools for Word · UI Preview",
             tagline: "A Word add-in built for pharmaceutical regulatory affairs, distilled from front-line authoring experience.",
             screenshot_alt: "Screenshot of RATools for Word: the RATools ribbon tab in Word with numbered-heading, style, and macro tools",
             features: [
@@ -91,6 +96,7 @@ window.I18N_EN = {
         pdf: {
             eyebrow: "02 · FINALIZING",
             name: "RATools for PDF",
+            window_title: "RATools for PDF · Batch Processor",
             tagline: "A desktop batch processor for eCTD-ready PDFs.",
             screenshot_alt: "Screenshot of RATools for PDF: the main batch-processing window with feature modules, file queue, and rule options",
             features: [
@@ -105,6 +111,7 @@ window.I18N_EN = {
         ectd: {
             eyebrow: "03 · PUBLISHING",
             name: "RATools for eCTD",
+            window_title: "RATools for eCTD · Architecture",
             tagline: ".NET + React eCTD publishing system covering the full application / sequence lifecycle.",
             screenshot_alt: "Illustration of RATools for eCTD: application, sequence, and publishing workflow of the eCTD system",
             features: [

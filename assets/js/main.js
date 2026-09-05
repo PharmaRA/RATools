@@ -223,6 +223,66 @@
         });
     }
 
+    // ============= Image Lightbox =============
+    function initLightbox() {
+        var lightbox = document.getElementById("lightbox");
+        if (!lightbox) return;
+
+        var img = lightbox.querySelector(".lightbox-img");
+        var caption = lightbox.querySelector(".lightbox-caption");
+        var closeBtn = lightbox.querySelector(".lightbox-close");
+        var backdrop = lightbox.querySelector(".lightbox-backdrop");
+        var lastFocused = null;
+
+        function open(src, alt) {
+            lastFocused = document.activeElement;
+            img.src = src;
+            img.alt = alt || "";
+            caption.textContent = alt || "";
+            lightbox.hidden = false;
+            // Force reflow for transition
+            void lightbox.offsetHeight;
+            lightbox.classList.add("is-open");
+            document.body.style.overflow = "hidden";
+            if (closeBtn) closeBtn.focus();
+        }
+
+        function close() {
+            lightbox.classList.remove("is-open");
+            document.body.style.overflow = "";
+            setTimeout(function () {
+                lightbox.hidden = true;
+                img.src = "";
+                if (lastFocused && lastFocused.focus) {
+                    lastFocused.focus();
+                }
+            }, 200);
+        }
+
+        document.addEventListener("click", function (e) {
+            var link = e.target.closest("[data-lightbox]");
+            if (!link) return;
+            e.preventDefault();
+            var src = link.getAttribute("data-lightbox") || link.getAttribute("href");
+            var alt = link.getAttribute("data-lightbox-alt") ||
+                (link.querySelector("img") && link.querySelector("img").getAttribute("alt")) || "";
+            open(src, alt);
+        });
+
+        if (closeBtn) {
+            closeBtn.addEventListener("click", close);
+        }
+        if (backdrop) {
+            backdrop.addEventListener("click", close);
+        }
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && lightbox.classList.contains("is-open")) {
+                close();
+            }
+        });
+    }
+
     // ============= Init =============
     function init() {
         initHeaderShadow();
@@ -230,6 +290,7 @@
         initSmoothScroll();
         initMobileNav();
         initBackToTop();
+        initLightbox();
     }
 
     if (document.readyState === "loading") {

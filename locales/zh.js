@@ -74,10 +74,15 @@ window.I18N_ZH = {
             issue: "反馈",
             stars: "GitHub Star 数"
         },
+        media: {
+            zoom: "点击放大",
+            lightbox_close: "关闭预览"
+        },
 
         word: {
             eyebrow: "01 · WRITING",
             name: "RATools for Word",
+            window_title: "RATools for Word · 界面预览",
             tagline: "为药品注册而生的 Word 效率插件，沉淀一线 RA 撰写经验。",
             screenshot_alt: "RATools for Word 截图：Word 功能区中的 RATools 选项卡，包含编号标题、样式与宏工具",
             features: [
@@ -91,6 +96,7 @@ window.I18N_ZH = {
         pdf: {
             eyebrow: "02 · FINALIZING",
             name: "RATools for PDF",
+            window_title: "RATools for PDF · 批量处理器",
             tagline: "面向 eCTD 递交场景的桌面端 PDF 批量处理工具。",
             screenshot_alt: "RATools for PDF 截图：批量处理主界面，包含功能模块、待处理队列与处理规则选项",
             features: [
@@ -105,6 +111,7 @@ window.I18N_ZH = {
         ectd: {
             eyebrow: "03 · PUBLISHING",
             name: "RATools for eCTD",
+            window_title: "RATools for eCTD · 流程架构",
             tagline: "基于 .NET + React 的 eCTD 发布系统，覆盖 application / sequence 全生命周期。",
             screenshot_alt: "RATools for eCTD 示意图：eCTD 发布系统的申请、序列与发布流程",
             features: [

@@ -88,7 +88,23 @@
             ul.innerHTML = "";
             for (var j = 0; j < items.length; j++) {
                 var li = document.createElement("li");
-                li.textContent = items[j];
+                var item = String(items[j]);
+                var colonIndex = item.indexOf("：");
+                if (colonIndex === -1) {
+                    colonIndex = item.indexOf(": ");
+                }
+                if (colonIndex !== -1) {
+                    var isCn = item.charAt(colonIndex) === "：";
+                    var prefix = item.slice(0, colonIndex);
+                    var rest = item.slice(colonIndex + (isCn ? 1 : 2));
+                    var strong = document.createElement("strong");
+                    strong.className = "feature-strong";
+                    strong.textContent = prefix + (isCn ? "：" : ": ");
+                    li.appendChild(strong);
+                    li.appendChild(document.createTextNode(rest));
+                } else {
+                    li.textContent = item;
+                }
                 ul.appendChild(li);
             }
         }
