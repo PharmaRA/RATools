@@ -283,6 +283,45 @@
         });
     }
 
+    // ============= Quick Command Copy =============
+    function initCopyButtons() {
+        function fallbackCopy(text, cb) {
+            var ta = document.createElement("textarea");
+            ta.value = text;
+            ta.style.position = "fixed";
+            ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+                document.execCommand("copy");
+                cb();
+            } catch (err) { /* ignore */ }
+            document.body.removeChild(ta);
+        }
+
+        document.addEventListener("click", function (e) {
+            var btn = e.target.closest("[data-copy]");
+            if (!btn) return;
+            var text = btn.getAttribute("data-copy");
+            if (!text) return;
+
+            function onDone() {
+                btn.classList.add("is-copied");
+                setTimeout(function () {
+                    btn.classList.remove("is-copied");
+                }, 2000);
+            }
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(onDone, function () {
+                    fallbackCopy(text, onDone);
+                });
+            } else {
+                fallbackCopy(text, onDone);
+            }
+        });
+    }
+
     // ============= Init =============
     function init() {
         initHeaderShadow();
@@ -291,6 +330,7 @@
         initMobileNav();
         initBackToTop();
         initLightbox();
+        initCopyButtons();
     }
 
     if (document.readyState === "loading") {

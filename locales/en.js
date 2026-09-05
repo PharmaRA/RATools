@@ -129,6 +129,7 @@ window.I18N_EN = {
         eyebrow: "UTILITIES",
         title: "Other Utilities",
         subtitle: "Open-source utility tools for regulatory intelligence and guidance document management, accelerating everyday RA research and submission preparation.",
+        copy_cmd: "Copy command",
         fda: {
             eyebrow: "01 · FDA GUIDELINES",
             name: "FDA Downloader",

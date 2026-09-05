@@ -129,6 +129,7 @@ window.I18N_ZH = {
         eyebrow: "UTILITIES",
         title: "其他实用工具",
         subtitle: "围绕药政法规情报与指导原则收集整理的开源小工具，助力日常 RA 调研与申报准备。",
+        copy_cmd: "复制运行命令",
         fda: {
             eyebrow: "01 · FDA GUIDELINES",
             name: "FDA Downloader",
