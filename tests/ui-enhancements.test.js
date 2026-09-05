@@ -46,12 +46,11 @@ assert.match(html, /class="quick-cmd"/, "Utilities should have quick command box
 assert.match(mainJs, /function initCopyButtons/, "main.js should initialize copy buttons");
 assert.match(css, /\.quick-cmd\s*\{/, "CSS should define .quick-cmd");
 
-// --- 5. Scroll Progress, External Links & Shortcuts ------------------------
+// --- 5. Scroll Progress & Shortcuts ----------------------------------------
 assert.match(html, /id="scroll-progress"/, "HTML should have scroll progress bar in header");
 assert.match(css, /\.scroll-progress\s*\{/, "CSS should define .scroll-progress");
 assert.match(mainJs, /function initScrollProgress/, "main.js should initialize scroll progress");
 assert.match(mainJs, /function initShortcuts/, "main.js should initialize keyboard shortcuts");
-assert.match(css, /\.btn\[target="_blank"\]::after/, "CSS should style external link indicator on buttons");
-assert.match(css, /\.footer-links a\[target="_blank"\]::after/, "CSS should style external link indicator on footer links");
+assert.doesNotMatch(css, /\.btn\[target="_blank"\]::after/, "Buttons should not have trailing arrow indicators");
 
 console.log("All UI enhancement tests passed successfully!");
