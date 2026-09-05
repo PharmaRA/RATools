@@ -728,11 +728,73 @@ code {
     color: var(--text-secondary);
 }
 
+/* ---------- Workflow I/O pills ---------- */
+.workflow-step-io {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border-subtle);
+    width: 100%;
+}
+
+.io-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.76rem;
+    font-weight: 500;
+    line-height: 1.2;
+    background: var(--bg-alt);
+    border: 1px solid var(--border-subtle);
+    transition: border-color 0.15s ease;
+}
+
+.io-pill--input .io-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+}
+
+.io-pill--output {
+    background: var(--tint-primary-soft);
+}
+
+.io-pill--output .io-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--color-primary);
+}
+
+.io-arrow {
+    color: var(--color-accent);
+    flex-shrink: 0;
+}
+
+.workflow-card:hover .io-pill {
+    border-color: var(--color-primary);
+}
+
 .workflow-arrow {
     flex: 0 0 auto;
     align-self: center;
     color: var(--text-muted);
     list-style: none;
+}
+
+.workflow-arrow svg {
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.workflow-step:hover + .workflow-arrow svg {
+    color: var(--color-primary);
+    transform: translateX(4px);
 }
 
 /* ==================== Project section ==================== */
@@ -1660,6 +1722,10 @@ code {
 
     .workflow-arrow svg {
         transform: rotate(90deg);
+    }
+
+    .workflow-step:hover + .workflow-arrow svg {
+        transform: rotate(90deg) translateX(4px);
     }
 }
 

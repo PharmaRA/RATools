@@ -50,7 +50,15 @@ window.I18N_EN = {
         finalize_stage: "Finalize",
         finalize_desc: "Batch-clean bookmarks, hyperlinks, and page settings. Output PDFs that match eCTD requirements.",
         publish_stage: "Publish",
-        publish_desc: "Manage applications and sequences, validate them, then generate FDA 3.2.2 eCTD submission packages."
+        publish_desc: "Manage applications and sequences, validate them, then generate FDA 3.2.2 eCTD submission packages.",
+        io_in: "IN",
+        io_out: "OUT",
+        draft_io_in: "Draft docs",
+        draft_io_out: "Standard .docx",
+        finalize_io_in: "Raw PDFs",
+        finalize_io_out: "eCTD PDFs",
+        publish_io_in: "Dossier files",
+        publish_io_out: "FDA 3.2.2 package"
     },
 
     projects: {

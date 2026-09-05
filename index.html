@@ -229,6 +229,17 @@
                             <span class="workflow-step-stage" data-i18n="workflow.draft_stage">撰写</span>
                             <span class="workflow-step-name">RATools for Word</span>
                             <span class="workflow-step-desc" data-i18n="workflow.draft_desc">基于 Word 模板与宏，统一样式、加速申报文档撰写。</span>
+                            <span class="workflow-step-io">
+                                <span class="io-pill io-pill--input">
+                                    <span class="io-label" data-i18n="workflow.io_in">IN</span>
+                                    <span class="io-text" data-i18n="workflow.draft_io_in">原始草稿</span>
+                                </span>
+                                <svg class="io-arrow" viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                                <span class="io-pill io-pill--output">
+                                    <span class="io-label" data-i18n="workflow.io_out">OUT</span>
+                                    <span class="io-text" data-i18n="workflow.draft_io_out">标准 .docx</span>
+                                </span>
+                            </span>
                         </a>
                     </li>
 
@@ -254,6 +265,17 @@
                             <span class="workflow-step-stage" data-i18n="workflow.finalize_stage">定稿</span>
                             <span class="workflow-step-name">RATools for PDF</span>
                             <span class="workflow-step-desc" data-i18n="workflow.finalize_desc">批量整理书签、超链接、页面规范，按 eCTD 要求输出 PDF。</span>
+                            <span class="workflow-step-io">
+                                <span class="io-pill io-pill--input">
+                                    <span class="io-label" data-i18n="workflow.io_in">IN</span>
+                                    <span class="io-text" data-i18n="workflow.finalize_io_in">散装 PDF</span>
+                                </span>
+                                <svg class="io-arrow" viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                                <span class="io-pill io-pill--output">
+                                    <span class="io-label" data-i18n="workflow.io_out">OUT</span>
+                                    <span class="io-text" data-i18n="workflow.finalize_io_out">合规 eCTD PDF</span>
+                                </span>
+                            </span>
                         </a>
                     </li>
 
@@ -277,6 +299,17 @@
                             <span class="workflow-step-stage" data-i18n="workflow.publish_stage">发布</span>
                             <span class="workflow-step-name">RATools for eCTD</span>
                             <span class="workflow-step-desc" data-i18n="workflow.publish_desc">管理申请与序列，校验并生成符合 FDA 3.2.2 的 eCTD 提交包。</span>
+                            <span class="workflow-step-io">
+                                <span class="io-pill io-pill--input">
+                                    <span class="io-label" data-i18n="workflow.io_in">IN</span>
+                                    <span class="io-text" data-i18n="workflow.publish_io_in">申报文件树</span>
+                                </span>
+                                <svg class="io-arrow" viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                                <span class="io-pill io-pill--output">
+                                    <span class="io-label" data-i18n="workflow.io_out">OUT</span>
+                                    <span class="io-text" data-i18n="workflow.publish_io_out">FDA 3.2.2 骨架包</span>
+                                </span>
+                            </span>
                         </a>
                     </li>
                 </ol>

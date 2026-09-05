@@ -50,7 +50,15 @@ window.I18N_ZH = {
         finalize_stage: "定稿",
         finalize_desc: "批量整理书签、超链接、页面规范，按 eCTD 要求输出 PDF。",
         publish_stage: "发布",
-        publish_desc: "管理申请与序列，校验并生成符合 FDA 3.2.2 的 eCTD 提交包。"
+        publish_desc: "管理申请与序列，校验并生成符合 FDA 3.2.2 的 eCTD 提交包。",
+        io_in: "IN",
+        io_out: "OUT",
+        draft_io_in: "原始草稿",
+        draft_io_out: "标准 .docx",
+        finalize_io_in: "散装 PDF",
+        finalize_io_out: "合规 eCTD PDF",
+        publish_io_in: "申报文件树",
+        publish_io_out: "FDA 3.2.2 骨架包"
     },
 
     projects: {
