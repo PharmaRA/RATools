@@ -70,6 +70,7 @@ window.I18N_EN = {
         },
         action: {
             download: "Download",
+            manual: "Manual",
             source: "Source",
             issue: "Issues",
             stars: "GitHub stars"

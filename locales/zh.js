@@ -70,6 +70,7 @@ window.I18N_ZH = {
         },
         action: {
             download: "下载",
+            manual: "使用手册",
             source: "源码",
             issue: "反馈",
             stars: "GitHub Star 数"

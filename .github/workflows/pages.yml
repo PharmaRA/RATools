@@ -1,0 +1,67 @@
+name: Deploy Portal & Manuals
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout RATools portal
+        uses: actions/checkout@v4
+        with:
+          path: portal
+      - name: Checkout RATools-for-Word
+        uses: actions/checkout@v4
+        with:
+          repository: PharmaRA/RATools-for-Word
+          ref: main
+          path: word-repo
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: word-repo/website/package-lock.json
+      - name: Build RATools-for-Word manual
+        working-directory: word-repo
+        env:
+          DOCS_SITE: https://ratools.qzz.io
+          DOCS_BASE: /word
+        run: |
+          python -m pip install -r requirements-docs.txt
+          npm --prefix website ci
+          npm --prefix website run build
+          python scripts/docs/check_docs.py --site-dir website/dist --base-path /word
+      - name: Assemble site
+        run: |
+          mkdir -p _site/word
+          cp -a portal/. _site/
+          rm -rf _site/.git _site/.github _site/docs _site/tests
+          cp -a word-repo/website/dist/. _site/word/
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
