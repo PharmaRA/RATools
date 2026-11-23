@@ -20,3 +20,6 @@ venv/
 
 # Node (in case future tooling is added)
 node_modules/
+/backups/
+/_site/
+/.artifacts/

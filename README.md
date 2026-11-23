@@ -2,6 +2,8 @@
 
 PharmaRA 三件套（Word / PDF / eCTD）的统一门户首页。
 
+站点地址：`https://ratools.qzz.io/`。Word 手册挂载于 `/word/`，PDF 手册挂载于 `/pdf/`；以实际已部署版本为准。[统一构建、验证与上线步骤](docs/manuals-deployment.md)。
+
 ## 项目结构
 
 ```
@@ -37,13 +39,17 @@ python -m http.server 8000
 
 ## 部署到 GitHub Pages
 
-1. 将本仓库推送到 GitHub（例如 `PharmaRA/PharmaRA.github.io` 或 `PharmaRA/ratools-portal`）。
-2. 在仓库 Settings → Pages 中，选择 `main` 分支、`/ (root)` 目录。
-3. 保存后几分钟即可通过 `https://pharmara.github.io` 访问。
+1. 先将两份手册所需版本推送到各自仓库的 `main`；PDF 的新文档 CI 先通过。
+2. 将门户修改提交到 PR；合并到 `main` 前完成构建校验。本仓库的 PR 和 `main` 推送只构建，不发布。
+3. 门户仓库 Settings → Pages → Source 选择 **GitHub Actions**，沿用 `ratools.qzz.io` 自定义域名及 HTTPS 设置，无需为 `/pdf/` 新增 DNS。
+4. 在 Actions → **Deploy Portal & Manuals** → Run workflow，选择 `main`，先保持 `publish` 未勾选，检查完整产物；准备上线时手动运行并勾选 `publish`。
+5. `build-word`、`build-pdf`、`assemble` 和 `deploy` 全部成功后，打开 `/word/`、`/pdf/` 检查手册和搜索。
+
+完整说明、失败处理和回退方法见[手册发布指南](docs/manuals-deployment.md)。仅推送 PDF 或 Word 仓库不会自动更新门户；更新手册后需重新运行门户的统一发布工作流。
 
 ## 技术要点
 
-- **纯静态**：无构建步骤、无框架依赖，全部原生 HTML / CSS / JS
+- **静态门户**：首页使用原生 HTML / CSS / JS；发布时合并独立构建的两份 Starlight 手册
 - **双语**：默认中文，顶部按钮一键切换英文，选择持久化到 localStorage
 - **动态版本号**：页面加载时调用 GitHub REST API 获取 Word / PDF 仓库的最新 Release 信息，带 sessionStorage 缓存（5 分钟）；eCTD 暂显示为正在开发中
 - **降级策略**：JS 禁用或 API 失败时，页面仍可正常阅读，已开放项目的下载按钮指向 Releases 列表页

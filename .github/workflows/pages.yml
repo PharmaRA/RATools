@@ -1,27 +1,28 @@
 name: Deploy Portal & Manuals
 
 on:
+  pull_request:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      publish:
+        description: '发布门户与两份手册到 ratools.qzz.io（不勾选只构建校验）'
+        type: boolean
+        default: false
+        required: true
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: portal-${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}-${{ inputs.publish || false }}
+  cancel-in-progress: false
 
 jobs:
-  build:
+  build-word:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout RATools portal
-        uses: actions/checkout@v4
-        with:
-          path: portal
       - name: Checkout RATools-for-Word
         uses: actions/checkout@v4
         with:
@@ -46,19 +47,97 @@ jobs:
           npm --prefix website ci
           npm --prefix website run build
           python scripts/docs/check_docs.py --site-dir website/dist --base-path /word
-      - name: Assemble site
-        run: |
-          mkdir -p _site/word
-          cp -a portal/. _site/
-          rm -rf _site/.git _site/.github _site/docs _site/tests
-          cp -a word-repo/website/dist/. _site/word/
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
-          path: _site
+          name: word-manual
+          path: word-repo/website/dist
+          if-no-files-found: error
+          retention-days: 7
+
+  build-pdf:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: pdf-repo/website
+    steps:
+      - name: Checkout RATools-for-PDF
+        uses: actions/checkout@v4
+        with:
+          repository: PharmaRA/RATools-for-PDF
+          ref: main
+          path: pdf-repo
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install locked PDF site dependencies with recycle protection
+        run: node scripts/install-deps.mjs
+      - name: Check and build PDF manual for /pdf/
+        run: npm run build:portal
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pdf-manual
+          path: pdf-repo/website/dist
+          if-no-files-found: error
+          retention-days: 7
+
+  assemble:
+    needs: [build-word, build-pdf]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout RATools portal
+        uses: actions/checkout@v4
+        with:
+          path: portal
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        with:
+          name: word-manual
+          path: word-site
+      - uses: actions/download-artifact@v4
+        with:
+          name: pdf-manual
+          path: pdf-site
+      - name: Check portal manual buttons
+        run: node portal/tests/manual-entry.test.js
+      - name: Check assembly protections
+        run: python -B portal/tests/site_assembly_test.py
+      - name: Assemble site
+        run: python -B portal/scripts/assemble_site.py --word-dist word-site --pdf-dist pdf-site --output portal/_site
+      - name: Validate combined routes, assets, anchors and search
+        run: python -B portal/scripts/check_site.py --site-dir portal/_site
+      - name: Upload complete site for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: portal-preview
+          path: portal/_site
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
+      - name: Prepare Pages artifact
+        if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.publish
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: portal/_site
 
   deploy:
-    needs: build
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.publish
+    needs: assemble
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: github-pages-production
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
